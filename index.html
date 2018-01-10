@@ -1,0 +1,33 @@
+﻿<html>
+    <head>
+        <title></title>
+        <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" language="javascript">
+        $(function() {
+            $("#Button").click(function() {
+                $("#Output").text("" );
+                var sourceText = $('#Source').val();
+                var links = sourceText.match(/https:\/\/link\.clashroyale\.com\/invite\/friend.*?(android|ios)/ig);
+                for( i=0; i<links.length; i++ ){
+                  $('#Output').append('<a href="'+links[i]+ '" target="_blank">'+links[i]+'</a><br/>');
+                  var re = /.*tag=(.*?)&.*/;
+                  var hashtag = links[i].replace(re, "$1")
+                  var statsroyale = 'http://statsroyale.com/profile/'+hashtag;
+                  var deckshoppro = 'https://spy.deckshop.pro/player/'+hashtag;
+                  $('#Output').append('<a href="' + statsroyale + '" target="_blank">' + statsroyale + '</a><br/>');
+                  $('#Output').append('<a href="' + deckshoppro + '" target="_blank">' + deckshoppro + '</a><br/>');
+                  $('#Output').append('<br/>');
+                }
+            });
+        });        
+    </script>
+    </head>
+    <body>
+        <textarea cols="100" rows="4" id="Source"></textarea>
+        <br />
+        <input type="button" value="Run" id="Button" />
+        <br />
+        <br />
+        <div id="Output"></div>
+    </body>
+</html>
