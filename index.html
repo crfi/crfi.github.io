@@ -14,9 +14,11 @@
                       $('#Output').append('<a href="'+links[i]+ '" target="_blank">'+links[i]+'</a><br/>');
                       var re = /.*tag=(.*?)&.*/;
                       var hashtag = links[i].replace(re, "$1")
+                      var goqrme = 'http://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data='+encodeURIComponent(links[i])+'&qzone=1&margin=0&size=400x400&ecc=L';
                       var statsroyale = 'http://statsroyale.com/profile/'+hashtag;
                       var deckshoppro = 'https://spy.deckshop.pro/player/'+hashtag;
                       var crapi = 'https://cr-api.com/player/'+hashtag;
+                      $('#Output').append('<a href="' + goqrme + '" target="_blank">' + goqrme + '</a><br/>');
                       $('#Output').append('<a href="' + statsroyale + '" target="_blank">' + statsroyale + '</a><br/>');
                       $('#Output').append('<a href="' + deckshoppro + '" target="_blank">' + deckshoppro + '</a><br/>');
                       $('#Output').append('<a href="' + crapi + '" target="_blank">' + crapi + '</a><br/>');
