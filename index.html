@@ -8,16 +8,24 @@
                 $("#Output").text("" );
                 var sourceText = $('#Source').val();
                 var links = sourceText.match(/https:\/\/link\.clashroyale\.com\/invite\/friend.*?(android|ios)/ig);
-                for( i=0; i<links.length; i++ ){
-                  $('#Output').append('<a href="'+links[i]+ '" target="_blank">'+links[i]+'</a><br/>');
-                  var re = /.*tag=(.*?)&.*/;
-                  var hashtag = links[i].replace(re, "$1")
-                  var statsroyale = 'http://statsroyale.com/profile/'+hashtag;
-                  var deckshoppro = 'https://spy.deckshop.pro/player/'+hashtag;
-                  $('#Output').append('<a href="' + statsroyale + '" target="_blank">' + statsroyale + '</a><br/>');
-                  $('#Output').append('<a href="' + deckshoppro + '" target="_blank">' + deckshoppro + '</a><br/>');
-                  $('#Output').append('<br/>');
+                if (links != null){
+                    for( i=0; i<links.length; i++ ){
+                      $('#Output').append('<a href="'+links[i]+ '" target="_blank">'+links[i]+'</a><br/>');
+                      var re = /.*tag=(.*?)&.*/;
+                      var hashtag = links[i].replace(re, "$1")
+                      var statsroyale = 'http://statsroyale.com/profile/'+hashtag;
+                      var deckshoppro = 'https://spy.deckshop.pro/player/'+hashtag;
+                      $('#Output').append('<a href="' + statsroyale + '" target="_blank">' + statsroyale + '</a><br/>');
+                      $('#Output').append('<a href="' + deckshoppro + '" target="_blank">' + deckshoppro + '</a><br/>');
+                      $('#Output').append('<br/>');
+                    }
                 }
+            });
+            $("#ClearButton").click(function() {
+                $("#Output").text("" );
+                var sourceText = $('#Source');
+                sourceText.val("");
+                sourceText.focus();
             });
         });        
     </script>
@@ -26,6 +34,7 @@
         <textarea cols="100" rows="4" id="Source"></textarea>
         <br />
         <input type="button" value="Run" id="Button" />
+        <input type="button" value="Clear" id="ClearButton" />
         <br />
         <br />
         <div id="Output"></div>
