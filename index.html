@@ -8,7 +8,7 @@
             $("#Button").click(function() {
                 $("#Output").text("" );
                 var sourceText = $('#Source').val();
-                var links = sourceText.match(/https:\/\/link\.clashroyale\.com\/invite\/friend\/[A-Za-z]{2,3}\?tag=.*?(android|ios)/ig);
+                var links = sourceText.match(/https:\/\/link\.clashroyale\.com\/invite\/friend\/[A-Za-z]{2,3}\?tag=.*?(android|ios|cafebazaar)/ig);
                 if (links != null){
                     for( i=0; i<links.length; i++ ){
                       $('#Output').append('<a href="'+links[i]+ '" target="_blank">'+links[i]+'</a><br/>');
